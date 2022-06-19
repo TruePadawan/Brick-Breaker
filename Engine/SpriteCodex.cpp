@@ -1,6 +1,6 @@
 #include "SpriteCodex.h"
 
-void SpriteCodex::DrawBall( const Vec2& topLeft,Graphics& gfx )
+void SpriteCodex::DrawBall( const Vector2D& topLeft,Graphics& gfx )
 {
 	const int x = int( topLeft.x ) - 7;
 	const int y = int( topLeft.y ) - 7;
