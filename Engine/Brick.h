@@ -4,6 +4,7 @@
 
 class Brick
 {
+public:
 	Brick(Rect& body, Color color);
 private:
 	Rect body;
