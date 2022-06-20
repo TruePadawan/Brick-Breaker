@@ -21,12 +21,13 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd ), frameTimer(),
+	wnd(wnd),
+	gfx(wnd), frameTimer(),
 	ball(Vector2D(100.0f, 100.0f), Vector2D(300.0f, 300.0f)),
-	wall(0.0f, float(Graphics::ScreenWidth), 0.0f, float(Graphics::ScreenHeight))
+	wall(0.0f, float(Graphics::ScreenWidth), 0.0f, float(Graphics::ScreenHeight)),
+	wallCollisionSound(L"Sounds\\arkpad.wav")
 {
 }
 
@@ -41,7 +42,10 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	ball.move(frameTimer.Mark());
-	ball.isAtBoundary(wall);
+	if (ball.isAtBoundary(wall))
+	{
+		wallCollisionSound.Play();
+	}
 }
 
 void Game::ComposeFrame()
