@@ -4,8 +4,10 @@
 class Rect
 {
 public:
+	Rect() = default;
 	Rect(float left, float right, float top, float bottom);
 	Rect(const Vector2D& topLeft, const Vector2D& bottomRight);
+	static Rect fromCenter(const Vector2D& centerPos, float halfWidth, float halfHeight);
 public:
 	float left;
 	float right;
