@@ -7,8 +7,11 @@ Paddle::Paddle(Vector2D& _centerPos, float _halfWidth, float _halfHeight)
 
 void Paddle::draw(Graphics& gfx) const
 {
-	Rect boundingRect{ getRect() };
+	Rect boundingRect{ getBoundingRect() };
 	gfx.DrawRect(boundingRect, Colors::Green);
+	boundingRect.left += 10;
+	boundingRect.right -= 10;
+	gfx.DrawRect(boundingRect, Colors::Red);
 }
 
 void Paddle::move(Keyboard& kbd, float ft)
@@ -25,7 +28,7 @@ void Paddle::move(Keyboard& kbd, float ft)
 
 void Paddle::isAtBoundary(const Rect& boundary)
 {
-	Rect boundingRect = Rect::fromCenter(centerPos, halfWidth, halfHeight);
+	Rect boundingRect = getBoundingRect();
 
 	if (boundingRect.left < boundary.left)
 	{
@@ -37,7 +40,17 @@ void Paddle::isAtBoundary(const Rect& boundary)
 	}
 }
 
-Rect Paddle::getRect() const
+void Paddle::handleBallCollision(Ball& ball)
+{
+	Rect boundingRect = getBoundingRect();
+	Rect ballBoundingRect = ball.getBoundingRect();
+	if (ball.getVelocity().y > 0 && boundingRect.isOverlapping(ballBoundingRect))
+	{
+		ball.reboundY();
+	}
+}
+
+Rect Paddle::getBoundingRect() const
 {
 	return Rect::fromCenter(centerPos, halfWidth, halfHeight);
 }

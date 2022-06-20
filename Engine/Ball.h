@@ -9,7 +9,8 @@ public:
 	void move(float ft);
 	bool isAtBoundary(const Rect &boundary);
 	void draw(Graphics& gfx);
-private:
+	Vector2D& getVelocity();
+	Rect getBoundingRect() const;
 	void reboundX();
 	void reboundY();
 private:

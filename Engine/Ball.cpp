@@ -20,7 +20,7 @@ void Ball::move(float ft)
 bool Ball::isAtBoundary(const Rect& boundary)
 {
 	bool collidedWithWall = false;
-	Rect boundingRect = Rect::fromCenter(position, radius, radius);
+	Rect boundingRect = getBoundingRect();
 
 	if (boundingRect.left < boundary.left)
 	{
@@ -54,6 +54,16 @@ bool Ball::isAtBoundary(const Rect& boundary)
 void Ball::draw(Graphics& gfx)
 {
 	SpriteCodex::DrawBall(position, gfx);
+}
+
+Vector2D& Ball::getVelocity()
+{
+	return velocity;
+}
+
+Rect Ball::getBoundingRect() const
+{
+	return Rect::fromCenter(position, radius, radius);
 }
 
 void Ball::reboundX()

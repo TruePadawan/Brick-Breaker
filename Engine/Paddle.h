@@ -13,7 +13,8 @@ public:
 	void draw(Graphics& gfx) const;
 	void move(Keyboard& kbd, float ft);
 	void isAtBoundary(const Rect& boundary);
-	Rect getRect() const;
+	void handleBallCollision(Ball& ball);
+	Rect getBoundingRect() const;
 private:
 	Vector2D centerPos;
 	float halfWidth;
