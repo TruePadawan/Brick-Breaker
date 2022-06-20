@@ -10,6 +10,12 @@ Rect::Rect(const Vector2D& topLeft, const Vector2D& bottomRight)
 {
 }
 
+bool Rect::isOverlapping(const Rect& other) const
+{
+	return (left < other.right&& right > other.left &&
+		top < other.bottom&& bottom > other.top);
+}
+
 Rect Rect::fromCenter(const Vector2D& centerPos, float halfWidth, float halfHeight)
 {
 	const Vector2D half{ halfWidth, halfHeight };
