@@ -24,7 +24,9 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ), frameTimer(),
+	ball(Vector2D(100.0f, 100.0f), Vector2D(300.0f, 300.0f)),
+	wall(0.0f, float(Graphics::ScreenWidth), 0.0f, float(Graphics::ScreenHeight))
 {
 }
 
@@ -38,8 +40,11 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	ball.move(frameTimer.Mark());
+	ball.isAtBoundary(wall);
 }
 
 void Game::ComposeFrame()
 {
+	ball.draw(gfx);
 }
