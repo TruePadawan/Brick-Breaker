@@ -51,6 +51,8 @@ private:
 	Ball ball;
 	Rect wall;
 	Sound wallCollisionSound;
+	Sound brickCollisionSound;
 	Paddle paddle;
+	Brick brick1;
 	/********************************/
 };

@@ -27,7 +27,8 @@ Game::Game(MainWindow& wnd)
 	gfx(wnd), frameTimer(),
 	ball(Vector2D(100.0f, 100.0f), Vector2D(300.0f, 300.0f)),
 	wall(0.0f, float(Graphics::ScreenWidth), 0.0f, float(Graphics::ScreenHeight)),
-	wallCollisionSound(L"Sounds\\arkpad.wav"), paddle(Vector2D(400.0f, 500.0f), 50.0f, 15.0f)
+	wallCollisionSound(L"Sounds\\arkpad.wav"), brickCollisionSound(L"Sounds\\arkbrick.wav"),
+	paddle(Vector2D(400.0f, 500.0f), 50.0f, 15.0f), brick1(Rect(40.0f, 60.0f, 40.0f, 100.0f), Colors::Red)
 {
 }
 
@@ -47,7 +48,10 @@ void Game::UpdateModel()
 	{
 		wallCollisionSound.Play();
 	}
-
+	if (brick1.handleBallCollision(ball))
+	{
+		brickCollisionSound.Play();
+	}
 	paddle.move(wnd.kbd, frameTime);
 	paddle.handleBallCollision(ball);
 	paddle.isAtBoundary(wall);
@@ -56,5 +60,6 @@ void Game::UpdateModel()
 void Game::ComposeFrame()
 {
 	ball.draw(gfx);
+	brick1.draw(gfx);
 	paddle.draw(gfx);
 }
