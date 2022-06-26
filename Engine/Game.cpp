@@ -25,20 +25,23 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd), frameTimer(),
-	ball(Vector2D(100.0f, 100.0f), Vector2D(300.0f, 300.0f)),
+	ball(Vector2D(200.0f, 200.0f), Vector2D(300.0f, 300.0f)),
 	wall(0.0f, float(Graphics::ScreenWidth), 0.0f, float(Graphics::ScreenHeight)),
 	wallCollisionSound(L"Sounds\\arkpad.wav"), brickCollisionSound(L"Sounds\\arkbrick.wav"),
 	paddle(Vector2D(400.0f, 500.0f), 50.0f, 15.0f)
 {
 	Color brickColors[nBricksDown] = { Colors::Blue, Colors::Red, Colors::Gray, Colors::Magenta };
 
+	float marginLeft = 40.0f;
+	float marginTop = 40.0f;
+
 	for (int y = 0; y < nBricksDown; ++y)
 	{
 		for (int x = 0; x < nBricksAcross; ++x)
 		{
-			float brickLeft = x * brickWidth;
+			float brickLeft = x * brickWidth + marginLeft;
 			float brickRight = brickLeft + brickWidth ;
-			float brickTop = y * brickHeight;
+			float brickTop = y * brickHeight + marginTop;
 			float brickBottom = brickTop + brickHeight;
 
 			bricks[x][y] = Brick(Rect(brickLeft, brickRight, brickTop, brickBottom), brickColors[y]);
