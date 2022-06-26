@@ -28,8 +28,23 @@ Game::Game(MainWindow& wnd)
 	ball(Vector2D(100.0f, 100.0f), Vector2D(300.0f, 300.0f)),
 	wall(0.0f, float(Graphics::ScreenWidth), 0.0f, float(Graphics::ScreenHeight)),
 	wallCollisionSound(L"Sounds\\arkpad.wav"), brickCollisionSound(L"Sounds\\arkbrick.wav"),
-	paddle(Vector2D(400.0f, 500.0f), 50.0f, 15.0f), brick1(Rect(40.0f, 60.0f, 40.0f, 100.0f), Colors::Red)
+	paddle(Vector2D(400.0f, 500.0f), 50.0f, 15.0f)
 {
+	Color brickColors[nBricksDown] = { Colors::Blue, Colors::Red, Colors::Gray, Colors::Magenta };
+	float padding = 10.0f;
+
+	for (int y = 0; y < nBricksDown; ++y)
+	{
+		for (int x = 0; x < nBricksAcross; ++x)
+		{
+			float brickLeft = x * brickWidth;
+			float brickRight = brickLeft + brickWidth ;
+			float brickTop = y * brickHeight;
+			float brickBottom = brickTop + brickHeight;
+
+			bricks[x][y] = Brick(Rect(brickLeft + padding, brickRight, brickTop + padding, brickBottom), brickColors[y]);
+		}
+	}
 }
 
 void Game::Go()
@@ -48,10 +63,23 @@ void Game::UpdateModel()
 	{
 		wallCollisionSound.Play();
 	}
-	if (brick1.handleBallCollision(ball))
+
+	bool shouldBreak = false;
+
+	for (int y = 0; y < nBricksDown; ++y)
 	{
-		brickCollisionSound.Play();
+		for (int x = 0; x < nBricksAcross; ++x)
+		{
+			if (bricks[x][y].handleBallCollision(ball))
+			{
+				brickCollisionSound.Play();
+				shouldBreak = true;
+				break;
+			}
+		}
+		if (shouldBreak) break;
 	}
+
 	paddle.move(wnd.kbd, frameTime);
 	paddle.handleBallCollision(ball);
 	paddle.isAtBoundary(wall);
@@ -60,6 +88,12 @@ void Game::UpdateModel()
 void Game::ComposeFrame()
 {
 	ball.draw(gfx);
-	brick1.draw(gfx);
+	for (int y = 0; y < nBricksDown; ++y)
+	{
+		for (int x = 0; x < nBricksAcross; ++x)
+		{
+			bricks[x][y].draw(gfx);
+		}
+	}
 	paddle.draw(gfx);
 }
