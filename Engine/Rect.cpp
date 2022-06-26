@@ -16,6 +16,11 @@ bool Rect::isOverlapping(const Rect& other) const
 		top < other.bottom&& bottom > other.top);
 }
 
+Rect Rect::getExpanded(float offset)
+{
+	return Rect(left - offset, right + offset, top - offset, bottom + offset);
+}
+
 Rect Rect::fromCenter(const Vector2D& centerPos, float halfWidth, float halfHeight)
 {
 	const Vector2D half{ halfWidth, halfHeight };

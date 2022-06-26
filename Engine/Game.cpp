@@ -31,7 +31,6 @@ Game::Game(MainWindow& wnd)
 	paddle(Vector2D(400.0f, 500.0f), 50.0f, 15.0f)
 {
 	Color brickColors[nBricksDown] = { Colors::Blue, Colors::Red, Colors::Gray, Colors::Magenta };
-	float padding = 10.0f;
 
 	for (int y = 0; y < nBricksDown; ++y)
 	{
@@ -42,7 +41,7 @@ Game::Game(MainWindow& wnd)
 			float brickTop = y * brickHeight;
 			float brickBottom = brickTop + brickHeight;
 
-			bricks[x][y] = Brick(Rect(brickLeft + padding, brickRight, brickTop + padding, brickBottom), brickColors[y]);
+			bricks[x][y] = Brick(Rect(brickLeft, brickRight, brickTop, brickBottom), brickColors[y]);
 		}
 	}
 }

@@ -46,6 +46,6 @@ void Brick::draw(Graphics& gfx)
 {
 	if (!destroyed)
 	{
-		gfx.DrawRect(body, color);
+		gfx.DrawRect(body.getExpanded(-1), color);
 	}
 }
