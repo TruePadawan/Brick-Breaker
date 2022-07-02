@@ -44,7 +44,13 @@ Game::Game(MainWindow& wnd)
 			float brickTop = y * brickHeight + marginTop;
 			float brickBottom = brickTop + brickHeight;
 
-			bricks[x][y] = Brick(Rect(brickLeft, brickRight, brickTop, brickBottom), brickColors[y]);
+			if (y == 2)
+			{
+				bricks[x][y] = Brick(Rect(brickLeft, brickRight, brickTop, brickBottom), brickColors[y], BrickType::HARD);
+			}
+			else {
+				bricks[x][y] = Brick(Rect(brickLeft, brickRight, brickTop, brickBottom), brickColors[y], BrickType::SOFT);
+			}
 		}
 	}
 }

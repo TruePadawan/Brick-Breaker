@@ -1,7 +1,7 @@
 #include "Brick.h"
 
-Brick::Brick(Rect& body, Color color)
-	:body(body), color(color), destroyed(false)
+Brick::Brick(Rect& body, Color color, BrickType type)
+	:body(body), color(color), type(type), destroyed(false), recordedHits(0)
 {
 }
 
@@ -19,7 +19,7 @@ bool Brick::handleBallCollision(Ball& ball)
 	if (!destroyed && ballRect.isOverlapping(brickRect))
 	{
 		didCollisionHappen = true;
-		destroyed = true;
+		setDestroyed();
 
 		if (ballRect.left < brickRect.left)
 		{
@@ -47,5 +47,17 @@ void Brick::draw(Graphics& gfx)
 	if (!destroyed)
 	{
 		gfx.DrawRect(body.getExpanded(-1), color);
+	}
+}
+
+void Brick::setDestroyed()
+{
+	if (type == HARD && recordedHits != 1)
+	{
+		++recordedHits;
+		color.SetB(0);
+	}
+	else {
+		destroyed = true;
 	}
 }
