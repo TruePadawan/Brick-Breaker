@@ -59,6 +59,8 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if (ball.isDestroyed()) return;
+
 	float frameTime = frameTimer.Mark();
 	ball.move(frameTime);
 	if (ball.isAtBoundary(wall))
@@ -89,6 +91,8 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	if (ball.isDestroyed()) return;
+
 	ball.draw(gfx);
 	for (int y = 0; y < nBricksDown; ++y)
 	{

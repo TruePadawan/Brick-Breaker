@@ -13,7 +13,9 @@ public:
 	Rect getBoundingRect() const;
 	void reboundX();
 	void reboundY();
+	bool isDestroyed();
 private:
+	bool destroyed;
 	Vector2D position;
 	Vector2D velocity;
 	static constexpr float radius = 7.0f;

@@ -1,7 +1,7 @@
 #include "Ball.h"
 
 Ball::Ball(const Vector2D& pos, const Vector2D& ballVelocity)
-	:position(pos), velocity(ballVelocity)
+	:position(pos), velocity(ballVelocity), destroyed(false)
 {
 	
 }
@@ -43,6 +43,7 @@ bool Ball::isAtBoundary(const Rect& boundary)
 	}
 	else if (boundingRect.bottom > Graphics::ScreenHeight)
 	{
+		destroyed = true;
 		collidedWithWall = true;
 		reboundY();
 		position.y -= boundingRect.bottom - boundary.bottom;
@@ -74,4 +75,9 @@ void Ball::reboundX()
 void Ball::reboundY()
 {
 	velocity.y = -velocity.y;
+}
+
+bool Ball::isDestroyed()
+{
+	return destroyed;
 }
