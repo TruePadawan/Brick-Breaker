@@ -26,7 +26,7 @@ void Paddle::move(Keyboard& kbd, float ft)
 	}
 }
 
-void Paddle::isAtBoundary(const Rect& boundary)
+void Paddle::handleBoundaryCollision(const Rect& boundary)
 {
 	Rect boundingRect = getBoundingRect();
 

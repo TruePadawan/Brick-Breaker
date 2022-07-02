@@ -84,7 +84,7 @@ void Game::UpdateModel()
 
 	paddle.move(wnd.kbd, frameTime);
 	paddle.handleBallCollision(ball);
-	paddle.isAtBoundary(wall);
+	paddle.handleBoundaryCollision(wall);
 }
 
 void Game::ComposeFrame()
