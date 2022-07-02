@@ -1,7 +1,7 @@
 #include "Paddle.h"
 
 Paddle::Paddle(Vector2D& _centerPos, float _halfWidth, float _halfHeight)
-	:centerPos(_centerPos), halfHeight(_halfHeight), halfWidth(_halfWidth), speed(300.0f)
+	:centerPos(_centerPos), halfHeight(_halfHeight), halfWidth(_halfWidth), speed(400.0f)
 {
 }
 

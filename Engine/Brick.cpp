@@ -34,7 +34,7 @@ bool Brick::handleBallCollision(Ball& ball)
 		{
 			ball.reboundY();
 		}
-		else if (ballRect.bottom > Graphics::ScreenHeight)
+		else if (ballRect.bottom > brickRect.bottom)
 		{
 			ball.reboundY();
 		}
