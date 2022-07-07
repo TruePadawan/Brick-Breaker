@@ -21,20 +21,12 @@ bool Brick::handleBallCollision(Ball& ball)
 		didCollisionHappen = true;
 		setDestroyed();
 
-		if (ballRect.left < brickRect.left)
-		{
-			ball.reboundX();
-		}
-		else if (ballRect.right > brickRect.right)
+		if (ballRect.left < brickRect.left || ballRect.right > brickRect.right)
 		{
 			ball.reboundX();
 		}
 
-		if (ballRect.top < brickRect.top)
-		{
-			ball.reboundY();
-		}
-		else if (ballRect.bottom > brickRect.bottom)
+		if (ballRect.top < brickRect.top || ballRect.bottom > brickRect.bottom)
 		{
 			ball.reboundY();
 		}
