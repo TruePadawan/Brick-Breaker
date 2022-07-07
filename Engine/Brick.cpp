@@ -34,6 +34,11 @@ bool Brick::handleBallCollision(Ball& ball)
 	return didCollisionHappen;
 }
 
+bool Brick::isDestroyed()
+{
+	return destroyed;
+}
+
 void Brick::draw(Graphics& gfx)
 {
 	if (!destroyed)

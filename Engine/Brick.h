@@ -14,6 +14,7 @@ public:
 	Brick(Rect& body, Color color, BrickType type = SOFT);
 	Rect getBoundingRect() const;
 	bool handleBallCollision(Ball& ball);
+	bool isDestroyed();
 	void draw(Graphics& gfx);
 private:
 	void setDestroyed();
