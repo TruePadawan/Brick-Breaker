@@ -28,6 +28,7 @@
 #include "FrameTimer.h"
 #include "Sound.h"
 #include "Paddle.h"
+#include <vector>
 
 class Game
 {
@@ -41,6 +42,7 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
+	std::vector<std::pair<int,int>> getGridPosOfCollidingBricks();
 	/********************************/
 private:
 	MainWindow& wnd;

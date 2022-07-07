@@ -10,6 +10,7 @@ public:
 	bool isAtBoundary(const Rect &boundary);
 	void draw(Graphics& gfx);
 	Vector2D& getVelocity();
+	Vector2D& getPos();
 	Rect getBoundingRect() const;
 	void reboundX();
 	void reboundY();

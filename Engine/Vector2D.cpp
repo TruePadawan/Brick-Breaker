@@ -62,3 +62,11 @@ Vector2D Vector2D::GetNormalized() const
 	}
 	return *this;
 }
+
+float Vector2D::getDisplacementFromCenter(const Vector2D& first, const Vector2D& second)
+{
+	float thetaX = std::abs(second.x - first.x);
+	float thetaY = std::abs(second.y - first.y);
+	Vector2D displacement(thetaX, thetaY);
+	return displacement.GetLengthSq();
+}

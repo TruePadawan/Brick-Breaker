@@ -15,6 +15,7 @@ public:
 	float GetLengthSq() const;
 	Vector2D& Normalize();
 	Vector2D GetNormalized() const;
+	static float getDisplacementFromCenter(const Vector2D& first, const Vector2D& second);
 public:
 	float x;
 	float y;

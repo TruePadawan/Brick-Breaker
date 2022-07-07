@@ -21,6 +21,11 @@ Rect Rect::getExpanded(float offset)
 	return Rect(left - offset, right + offset, top - offset, bottom + offset);
 }
 
+Vector2D Rect::getCenterPos() const
+{
+	return Vector2D((left+right)/2.0f, (top+bottom)/2.0f);
+}
+
 Rect Rect::fromCenter(const Vector2D& centerPos, float halfWidth, float halfHeight)
 {
 	const Vector2D half{ halfWidth, halfHeight };

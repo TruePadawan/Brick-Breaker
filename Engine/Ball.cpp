@@ -62,6 +62,11 @@ Vector2D& Ball::getVelocity()
 	return velocity;
 }
 
+Vector2D& Ball::getPos()
+{
+	return position;
+}
+
 Rect Ball::getBoundingRect() const
 {
 	return Rect::fromCenter(position, radius, radius);
