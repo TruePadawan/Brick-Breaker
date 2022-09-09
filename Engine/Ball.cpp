@@ -44,9 +44,9 @@ bool Ball::isAtBoundary(const Rect& boundary)
 	else if (boundingRect.bottom > Graphics::ScreenHeight)
 	{
 		destroyed = true;
-		collidedWithWall = true;
+		/*collidedWithWall = true;
 		reboundY();
-		position.y -= boundingRect.bottom - boundary.bottom;
+		position.y -= boundingRect.bottom - boundary.bottom;*/
 	}
 
 	return collidedWithWall;

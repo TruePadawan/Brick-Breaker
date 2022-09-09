@@ -103,21 +103,6 @@ void Game::UpdateModel()
 		}
 		brickCollisionSound.Play();
 	}
-	/*bool shouldBreak = false;
-
-	for (int y = 0; y < nBricksDown; ++y)
-	{
-		for (int x = 0; x < nBricksAcross; ++x)
-		{
-			if (bricks[x][y].handleBallCollision(ball))
-			{
-				brickCollisionSound.Play();
-				shouldBreak = true;
-				break;
-			}
-		}
-		if (shouldBreak) break;
-	}*/
 
 	paddle.move(wnd.kbd, frameTime);
 	paddle.handleBallCollision(ball);
